@@ -20,13 +20,18 @@ router.post("/", isLoggedIn, function (req, res) {
     var name = req.body.name;
     var image = req.body.image;
     var desc = req.body.description;
-    var newArticle = { name: name, image: image, description: desc }
+    var author ={
+        id: req.user._id,
+        username: req.user.username
+    }
+    var newArticle = { name: name, image: image, description: desc, author:author}
     // Create a new article and save to DB
     Article.create(newArticle, function (err, newlyCreated) {
         if (err) {
             console.log(err);
         } else {
             //redirect back to articles page
+            console.log(newlyCreated);
             res.redirect("/news");
         }
     });
@@ -51,10 +56,36 @@ router.get("/:id", function (req, res) {
     });
 });
 
-//Destroy News Route
-router.delete("/:id", function(req,res){
-    res.send("You are trying to delete something");
-})
+//Edit Campground Route
+router.get("/:id/edit", function(req,res){
+    Article.findById(req.params.id, function (err, foundArticle) {
+        if (err) {
+            res.redirect("/news")
+        } else {
+            res.render("news/edit", { article: foundArticle });
+        }
+    });
+});
+//Update Campground Route
+router.put("/:id", function(req,res){
+    //find and update the correct campground
+    Article.findByIdAndUpdate(req.params.id, req.body.article, function(err,updatedArticle){
+        if(err){
+            res.redirect("/news")
+        }else{
+            //redirect somewhere (show page)
+            res.redirect("/news/" +req.params.id)
+        }
+    });
+    
+});
+
+
+// Destroy News Route
+// router.delete("/:id", function(req,res){
+
+//     res.send("You are trying to delete something");
+// })
 
 
 //middleware
