@@ -7,6 +7,7 @@ var User = require('../models/user');
 // AUTH ROUTES
 //  ===========
 
+
 // show register form
 router.get("/register", function (req, res) {
     res.render("register");
