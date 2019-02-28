@@ -56,19 +56,16 @@ router.get("/:id", function (req, res) {
     });
 });
 
-//Edit Campground Route
-router.get("/:id/edit", function(req,res){
+//Edit ArticleRoute
+router.get("/:id/edit", checkArticleOwnership, function(req,res){
+    //is user logged in
     Article.findById(req.params.id, function (err, foundArticle) {
-        if (err) {
-            res.redirect("/news")
-        } else {
-            res.render("news/edit", { article: foundArticle });
-        }
+        res.render("news/edit", { article: foundArticle });
     });
 });
-//Update Campground Route
-router.put("/:id", function(req,res){
-    //find and update the correct campground
+//Update Article Route
+router.put("/:id", checkArticleOwnership, function(req,res){
+    //find and update the correct article
     Article.findByIdAndUpdate(req.params.id, req.body.article, function(err,updatedArticle){
         if(err){
             res.redirect("/news")
@@ -82,10 +79,15 @@ router.put("/:id", function(req,res){
 
 
 // Destroy News Route
-// router.delete("/:id", function(req,res){
-
-//     res.send("You are trying to delete something");
-// })
+router.delete("/:id", checkArticleOwnership, function(req,res){
+    Article.findByIdAndRemove(req.params.id, function (err) {
+        if (err) {
+            res.redirect("/news");
+        } else {
+            res.redirect("/news");
+        }
+    });
+});
 
 
 //middleware
@@ -94,6 +96,27 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     res.redirect("/login");
+}
+
+
+function checkArticleOwnership(req,res,next){
+    if (req.isAuthenticated()) {
+        Article.findById(req.params.id, function (err, foundArticle) {
+            if (err) {
+                res.redirect("back");
+            } else {
+                if (foundArticle.author.id.equals(req.user._id)) {
+                    next();
+                } else {
+                    res.redirect("back");
+                }
+                // if(foundArticle.author.id)
+
+            }
+        });
+    } else {
+        res.redirect("back");
+    }
 }
 
 module.exports = router;

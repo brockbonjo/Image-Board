@@ -19,8 +19,12 @@
                     <p>
                         <em>Submitted By <%= article.author.username %></em>
                     </p>
+                    <%if(currentUser && article.author.id.equals(currentUser._id)){ %>
                     <a class = "btn btn-warning" href="/news/<%=article._id%>/edit">Edit</a>
-
+                    <form id ="delete-form" action="/news/<%= article._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                    <% } %>
                 </div>
             </div>
             <div class="well">
