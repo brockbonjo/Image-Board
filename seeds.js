@@ -23,40 +23,40 @@ var data = [
 function seedDB() {
     //Remove all articles
     Article.remove({}, function (err) {
-        if (err) {
-            console.log(err);
-        }
-        console.log("removed articles!");
-        Comment.remove({}, function (err) {
-            if (err) {
-                console.log(err);
-            }
-            console.log("removed comments!");
-            //add a few articles
-            data.forEach(function (seed) {
-                Article.create(seed, function (err, article) {
-                    if (err) {
-                        console.log(err)
-                    } else {
-                        console.log("added an article");
-                        //create a comment
-                        Comment.create(
-                            {
-                                text: "This place is great, but I wish there was internet",
-                                author: "Homer"
-                            }, function (err, comment) {
-                                if (err) {
-                                    console.log(err);
-                                } else {
-                                    article.comments.push(comment);
-                                    article.save();
-                                    console.log("Created new comment");
-                                }
-                            });
-                    }
-                });
-            });
-        });
+        // if (err) {
+        //     console.log(err);
+        // }
+        // console.log("removed articles!");
+        // Comment.remove({}, function (err) {
+        //     if (err) {
+        //         console.log(err);
+        //     }
+        //     console.log("removed comments!");
+        //     //add a few articles
+        //     data.forEach(function (seed) {
+        //         Article.create(seed, function (err, article) {
+        //             if (err) {
+        //                 console.log(err)
+        //             } else {
+        //                 console.log("added an article");
+        //                 //create a comment
+        //                 Comment.create(
+        //                     {
+        //                         text: "This place is great, but I wish there was internet",
+        //                         author: "Homer"
+        //                     }, function (err, comment) {
+        //                         if (err) {
+        //                             console.log(err);
+        //                         } else {
+        //                             article.comments.push(comment);
+        //                             article.save();
+        //                             console.log("Created new comment");
+        //                         }
+        //                     });
+        //             }
+        //         });
+        //     });
+        // });
     });
     //add a few comments
 }
