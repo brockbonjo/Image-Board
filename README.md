@@ -15,5 +15,7 @@ could send her a link to and she can see what is going on in their life.
 The point of the app is to foster a sense of community through people who have developed a close bond through another medium.  Thensocialize and express themselves.  Especially for those who sometimes can not express their thoughts in person.  
 
 
+User Story: Is new to the group and wants to login and create an account then read through post.  Then comment to contribute to any discussion he participates in.  He also wants to be able to read the website on his phone or tablet.  
+
 
 ![](images/screenshot.png)
