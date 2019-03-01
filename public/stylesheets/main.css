@@ -1,3 +1,7 @@
+body {
+  background-color: #052A5C;
+}
+
 .thumbnail img{
     width: 100%;
 }
@@ -13,3 +17,9 @@
 #delete-form{
     display:inline;
 }
+
+.navbar {
+    color: #0A6FA4;
+    background-color: #0A6FA4;;
+}
+

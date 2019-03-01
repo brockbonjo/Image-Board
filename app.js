@@ -20,10 +20,11 @@ var commentRoutes = require("./routes/comment"),
 
 // require("./config/database");
 // mongodb://penguin:penguin1@ds155815.mlab.com:55815/news
+mongoose.connect("mongodb://penguin:penguin1@ds155815.mlab.com:55815/news")
 
 
 
-mongoose.connect("mongodb://localhost/yelp_camp_v6");
+// mongoose.connect("mongodb://localhost/yelp_camp_v6");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
