@@ -81,8 +81,6 @@ router.put("/:id", checkArticleOwnership, function(req,res){
 // Destroy News Route
 router.delete("/:id", checkArticleOwnership, function(req,res){
     Article.findByIdAndRemove(req.params.id, function (err) {
-        console.log("you have used the delete route");
-        console.log(req.params.id);
         if (err) {
             res.redirect("/news");
         } else {

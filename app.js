@@ -10,10 +10,18 @@ var express = require("express"),
     seedDB = require("./seeds"),
     methodOverride = require("method-override");
 
+
+
 //requiring routes
 var commentRoutes = require("./routes/comment"),
     newsRoutes    = require("./routes/news"),
     indexRoutes    = require("./routes/index");
+
+
+// require("./config/database");
+// mongodb://penguin:penguin1@ds155815.mlab.com:55815/news
+
+
 
 mongoose.connect("mongodb://localhost/yelp_camp_v6");
 app.use(bodyParser.urlencoded({ extended: true }));
