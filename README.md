@@ -1,5 +1,7 @@
 Explore the image board at [https://salty-citadel-76474.herokuapp.com/](https://salty-citadel-76474.herokuapp.com/)
 
+![](images/screenshot.png)
+
 # What I Learned
 Building this app taught me how to implement full CRUD (Create, Read, Update, and Destroy) functionality with Node JS.  I already had some experience with that concept.  But the best part about this app is the user authentication, that is handled locally.  The user authentication only allows users to edit, or delete posts that they have posted themself.  Also when a user comments on another post their username is automatically filled in for them.  I had to create three different models.  The models for the database were User, Comment, Article.  I had to connect them by refrence in mongo DB to be able to ensure that other users did not have control over posts that were not theirs.  I also used middleware to ensure security on routes.  So even if someone knew the url route or used Postman, they still could not edit or delete another users post.  
 
@@ -25,4 +27,4 @@ User Story: Is new to the group and wants to login and create an account then re
 
 
 
-![](images/screenshot.png)
+
