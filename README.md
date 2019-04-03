@@ -17,5 +17,8 @@ The point of the app is to foster a sense of community through people who have d
 
 User Story: Is new to the group and wants to login and create an account then read through post.  Then comment to contribute to any discussion he participates in.  He also wants to be able to read the website on his phone or tablet.  
 
+# Image-Board
+
+
 
 ![](images/screenshot.png)
